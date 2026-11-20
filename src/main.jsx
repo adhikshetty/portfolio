@@ -358,9 +358,9 @@ function App() {
           </article>
           <article>
             <span className="timeline-dot" />
-            <small>COMPLETED</small>
-            <h3>PUC — Commerce with Computer Science</h3>
-            <p>Sri Rama PU College, Kalladka — 93.17%</p>
+            <small>2023</small>
+            <h3>Pre-University Course (PUC)</h3>
+            <p>Sri Rama PU College, Kalladka · Commerce (CS) · 93.17%</p>
           </article>
         </div>
       </section>
