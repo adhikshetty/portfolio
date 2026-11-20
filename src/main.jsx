@@ -258,7 +258,7 @@ function App() {
         <div className="about-grid">
           <div className="personal-card">
             <p className="eyebrow">MY JOURNEY</p>
-            <p>I am Adhik Shetty, pursuing an MCA at St Aloysius (Deemed to be University), Mangaluru. I completed my BCA with a CGPA of 8.33 and continue to explore how software, AI and cloud technologies solve meaningful problems.</p>
+            <p>I am Adhik Shetty, pursuing an MCA at St Aloysius (Deemed to be University), AIMIT Centre, Beeri. I completed my BCA with a CGPA of 8.33 and continue to explore how software, AI and cloud technologies solve meaningful problems.</p>
             <p>My interests extend from Smart India Hackathon work and network security to NCC leadership, team coordination and disciplined execution.</p>
           </div>
           <div className="milestone-grid">
