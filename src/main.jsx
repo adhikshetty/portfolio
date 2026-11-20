@@ -4,17 +4,26 @@ import {
   ArrowDown,
   ArrowUpRight,
   Award,
+  Brain,
+  BrainCircuit,
   ChevronDown,
+  Cloud,
+  Code2,
   Github,
+  Instagram,
   Linkedin,
   Mail,
   Menu,
+  Network,
   Shield,
+  Terminal,
   Users,
+  Workflow,
   X,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import professionalPhoto from "../assets/professional-pic.jpeg";
 import heroPortrait from "../assets/hero-portrait.png";
 import "./styles.css";
 
@@ -136,14 +145,14 @@ const leadership = [
 ];
 
 const interests = [
-  "Artificial Intelligence",
-  "Machine Learning",
-  "Cloud Computing",
-  "AI + Cloud Integration",
-  "Cybersecurity",
-  "Network Security",
-  "Software Development",
-  "Competitive Programming",
+  { title: "Artificial Intelligence", icon: BrainCircuit },
+  { title: "Machine Learning", icon: Brain },
+  { title: "Cloud Computing", icon: Cloud },
+  { title: "AI + Cloud Integration", icon: Workflow },
+  { title: "Cybersecurity", icon: Shield },
+  { title: "Network Security", icon: Network },
+  { title: "Software Development", icon: Code2 },
+  { title: "Competitive Programming", icon: Terminal },
 ];
 
 function Navigation() {
@@ -185,6 +194,7 @@ function App() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const isFormComplete = form.name.trim() && form.email.trim() && form.message.trim();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -264,11 +274,15 @@ function App() {
             <p>I'm Adhik Shetty, currently pursuing my MCA at St Aloysius (Deemed to be University), AIMIT Centre, Beeri, after completing my BCA with a CGPA of 8.33. I'm passionate about technology, innovation and exploring how Software, AI and Cloud Computing can turn ambitious ideas into meaningful solutions.</p>
             <p>Beyond technology, my NCC journey has shaped me into a disciplined leader with a strong sense of responsibility, teamwork and determination. From national-level experiences to hackathons and innovative projects, I thrive on challenges, embrace continuous learning and believe in pushing beyond boundaries.</p>
           </div>
-          <div className="milestone-grid">
-            <div><strong>8.33</strong><span>BCA CGPA</span></div>
-            <div><strong>MCA</strong><span>Currently pursuing</span></div>
-            <div><strong>SIH</strong><span>2026 university selection</span></div>
-            <div><strong>NCC</strong><span>Senior Under Officer</span></div>
+          <div className="about-visual">
+            <img className="professional-photo" src={professionalPhoto} alt="Adhik Shetty" />
+            <p className="eyebrow highlights-label">HIGHLIGHTS</p>
+            <div className="milestone-grid">
+              <div><strong>8.33</strong><span>BCA CGPA</span></div>
+              <div><strong>MCA</strong><span>Currently pursuing</span></div>
+              <div><strong>SIH</strong><span>2026 university selection</span></div>
+              <div><strong>NCC</strong><span>Republic Day Camp</span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -371,8 +385,8 @@ function App() {
       <section id="exploring" className="content-section reveal">
         <SectionHeading kicker="07 / EXPLORING" title="Always Learning." accent="Always Evolving." />
         <div className="interest-grid">
-          {interests.map((interest, index) => (
-            <article key={interest}><span>{String(index + 1).padStart(2, "0")}</span><h3>{interest}</h3></article>
+          {interests.map(({ title, icon: Icon }, index) => (
+            <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><Icon className="interest-icon" size={28} strokeWidth={1.5} /><h3>{title}</h3></article>
           ))}
         </div>
       </section>
@@ -390,7 +404,8 @@ function App() {
             <a href="mailto:dineshpachikodi13@gmail.com"><Mail size={18} /><span>Email address<br /><b>dineshpachikodi13@gmail.com</b></span></a>
             <a href="https://www.linkedin.com/in/adhik-d-shetty-2jul2005" target="_blank" rel="noreferrer"><Linkedin size={18} /><span>LinkedIn<br /><b>Adhik D Shetty</b></span></a>
             <a href="https://github.com/adhikshetty" target="_blank" rel="noreferrer"><Github size={18} /><span>GitHub<br /><b>adhikshetty</b></span></a>
-            <p className="location">KARNATAKA, INDIA</p>
+            <a href="https://www.instagram.com/adhikshetty/" target="_blank" rel="noreferrer"><Instagram size={18} /><span>Instagram<br /><b>@adhikshetty</b></span></a>
+            <p className="location">BANTWAL, KARNATAKA, INDIA</p>
           </aside>
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             {submitted ? (
@@ -403,7 +418,7 @@ function App() {
                 {errors.email && <span className="form-error">{errors.email}</span>}
                 <label>Message<textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell me about your idea" rows="5" /></label>
                 {errors.message && <span className="form-error">{errors.message}</span>}
-                <button className="primary-button" type="submit">SEND MESSAGE <ArrowUpRight size={14} /></button>
+                <button className={`primary-button ${isFormComplete ? "form-ready" : ""}`} type="submit">SEND MESSAGE <ArrowUpRight size={14} /></button>
               </>
             )}
           </form>
@@ -411,7 +426,7 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <span>Always curious. Always building. Always evolving.</span>
+        <strong>I AM MORE THAN <em>WHAT YOU SEE</em></strong>
         <a href="#home" aria-label="Back to top"><ArrowDown size={16} /></a>
       </footer>
     </main>
