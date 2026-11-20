@@ -45,7 +45,7 @@ const skillGroups = [
   },
   {
     title: "Development Tools",
-    items: ["Git", "GitHub", "VS Code"],
+    items: ["Git", "GitHub", "VS Code", "MS Suite"],
   },
   {
     title: "Emerging Technologies",
