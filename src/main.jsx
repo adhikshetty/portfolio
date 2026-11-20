@@ -160,7 +160,6 @@ function Navigation() {
             </a>
           ))}
         </nav>
-        <a className="option-button" href="#contact" onClick={() => setOpen(false)}>OPTION</a>
         <button className="menu-button" type="button" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
