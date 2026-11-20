@@ -1,13 +1,56 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Award,
+  ChevronDown,
+  Github,
+  Linkedin,
+  Mail,
+  Menu,
+  Shield,
+  Users,
+  X,
+} from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles.css";
 
-const navigation = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+gsap.registerPlugin(ScrollTrigger);
+
+const navItems = [
+  ["Home", "home"],
+  ["About", "about"],
+  ["Skills", "skills"],
+  ["Projects", "projects"],
+  ["Achievements", "achievements"],
+  ["Leadership", "leadership"],
+  ["Education", "education"],
+  ["Contact", "contact"],
+];
+
+const skillGroups = [
+  {
+    title: "Programming Languages",
+    items: ["Python", "Java", "C", "JavaScript"],
+  },
+  {
+    title: "Web Development",
+    items: ["HTML", "CSS", "JavaScript", "Node.js"],
+  },
+  {
+    title: "Database",
+    items: ["MySQL", "SQLite"],
+  },
+  {
+    title: "Development Tools",
+    items: ["Git", "GitHub", "VS Code"],
+  },
+  {
+    title: "Emerging Technologies",
+    items: ["Artificial Intelligence", "Machine Learning", "Cloud Computing", "Cybersecurity", "Network Security"],
+  },
 ];
 
 const projects = [
@@ -15,97 +58,183 @@ const projects = [
     number: "01",
     label: "SIH 2026 / NTRO",
     title: "AI-Driven Multi-Vendor Network Security Compliance Auditor",
-    description: "Selected at university level for Smart India Hackathon 2026. Normalises multi-vendor configurations and produces explainable, evidence-based compliance assessments.",
-    tags: ["Python", "React", "FastAPI", "Netmiko", "NLP / ML"],
+    summary: "An intelligent compliance system that normalises multi-vendor configurations and produces explainable, evidence-based assessments.",
+    details: [
+      "Selected at the university level for Smart India Hackathon 2026, SIH26155.",
+      "Normalises multi-vendor configuration syntax and detects unknown or unsupported structures.",
+      "Uses a human-in-the-loop workflow to improve system decisions through expert feedback.",
+      "Maps findings to CIS Benchmarks and NIST SP 800-53 with evidence-based remediation.",
+    ],
+    stack: ["Python", "React", "FastAPI", "Netmiko", "NAPALM", "NLP / ML"],
   },
   {
     number: "02",
     label: "FULL-STACK SYSTEM",
     title: "Auto Rickshaw Management System",
-    description: "A complete management concept for stands, availability, driver registration, bookings, ratings, reviews, an admin dashboard and demand analytics.",
-    tags: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"],
+    summary: "A management platform for stand operations, vehicle availability, bookings, driver information and demand analytics.",
+    details: [
+      "Locate stands and check vehicle availability.",
+      "Manage driver registration, booking requests and ride records.",
+      "Support ratings, reviews and an administrative dashboard.",
+      "Track demand trends through operational analytics.",
+    ],
+    stack: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"],
   },
   {
     number: "03",
     label: "AI HACKATHON CONCEPT",
     title: "SehatSathi: AI Voice Medical Assistant",
-    description: "A conceptual assistant for rural and semi-urban communities, with voice interaction, text assistance, local-language support and conversational AI.",
-    tags: ["AI Voice", "Conversational AI", "Accessibility"],
+    summary: "A conceptual conversational assistant designed to make basic health information more accessible to rural and semi-urban communities.",
+    details: [
+      "Supports voice-based and text-based interaction.",
+      "Uses local-language and accessibility-first experiences.",
+      "Provides conversational AI guidance rather than a production medical diagnosis.",
+      "Demonstrates how accessible technology can reduce information gaps.",
+    ],
+    stack: ["AI Voice", "Conversational AI", "Accessibility"],
   },
 ];
 
-const skills = [
-  "Python", "Java", "C", "JavaScript",
-  "HTML", "CSS", "Node.js", "MySQL", "SQLite",
-  "Git", "GitHub", "VS Code",
+const achievements = [
+  {
+    year: "2026",
+    label: "UNIVERSITY SELECTION",
+    title: "Smart India Hackathon 2026",
+    text: "Selected at university level for SIH 2026 Problem Statement ID SIH26155, NTRO.",
+  },
+  {
+    year: "2026",
+    label: "FINAL ROUND",
+    title: "Web Designing Competition",
+    text: "Selected for the final round, recognising strong visual design and frontend implementation.",
+  },
+  {
+    year: "2026",
+    label: "NCC ARM Y WING",
+    title: "NCC Recognition",
+    text: "Cadet Senior Under Officer with RDC and SNIC participation and Best in Army Wings Trophy 2026 recognition.",
+  },
 ];
 
-const exploring = [
-  "Artificial Intelligence", "Machine Learning", "Cloud Computing",
-  "AI + Cloud Integration", "Cybersecurity", "Network Security",
+const leadership = [
+  {
+    icon: Shield,
+    title: "Cadet Senior Under Officer",
+    text: "NCC Army Wing leadership role, carrying responsibility for coordination, discipline and team direction.",
+  },
+  {
+    icon: Users,
+    title: "Camps & Team Management",
+    text: "Completed RDC and SNIC, gaining experience in demanding team environments, camp operations and communication.",
+  },
+  {
+    icon: Award,
+    title: "Discipline & Responsibility",
+    text: "Built consistency, accountability and resilience through structured military training and service.",
+  },
+];
+
+const interests = [
+  "Artificial Intelligence",
+  "Machine Learning",
+  "Cloud Computing",
+  "AI + Cloud Integration",
+  "Cybersecurity",
+  "Network Security",
+  "Software Development",
+  "Competitive Programming",
 ];
 
 function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const closeMenu = () => setMenuOpen(false);
-
-  return (
-    <header className="topbar">
-      <a className="logo" href="#home" aria-label="Adhik Shetty home">
-        <span className="logo-mark">A</span>
-        <span className="logo-name">ADHIK SHETTY</span>
-      </a>
-
-      <nav className={`nav-links ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
-        {navigation.map((item, index) => (
-          <a className={index === 0 ? "active" : ""} href={item.href} key={item.label} onClick={closeMenu}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <a className="option-button" href="#contact" onClick={closeMenu}>
-        OPTION
-      </a>
-
-      <button className="menu-button" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>
-        {menuOpen ? <X size={22} /> : <Menu size={22} />}
-      </button>
-    </header>
-  );
-}
-
-function CornerMarks() {
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <span className="corner top-left" />
-      <span className="corner top-right" />
-      <span className="corner bottom-left" />
-      <span className="corner bottom-right" />
+      <header className="topbar">
+        <a className="logo" href="#home" aria-label="Adhik Shetty home">
+          <span className="logo-mark">A</span>
+          <span className="logo-name">ADHIK SHETTY</span>
+        </a>
+        <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
+          {navItems.map(([label, id], index) => (
+            <a className={index === 0 ? "active" : ""} href={`#${id}`} key={id} onClick={() => setOpen(false)}>
+              {label}
+            </a>
+          ))}
+        </nav>
+        <a className="option-button" href="#contact" onClick={() => setOpen(false)}>OPTION</a>
+        <button className="menu-button" type="button" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"}>
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </header>
     </>
   );
 }
 
-function App() {
+function SectionHeading({ kicker, title, accent }) {
   return (
-    <main id="home" className="portfolio-page">
-      <div className="ambient ambient-red" />
-      <div className="ambient ambient-orange" />
+    <header className="section-heading">
+      <p className="eyebrow">{kicker}</p>
+      <h2>{title} {accent && <em>{accent}</em>}</h2>
+    </header>
+  );
+}
+
+function App() {
+  const pageRef = useRef(null);
+  const [openSkills, setOpenSkills] = useState(0);
+  const [openProject, setOpenProject] = useState(0);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".hero-copy > *", {
+        y: 28,
+        opacity: 0,
+        duration: 0.75,
+        stagger: 0.09,
+        delay: 0.25,
+        ease: "power3.out",
+      });
+      gsap.from(".topbar", { y: -25, opacity: 0, duration: 0.7, delay: 0.15, ease: "power3.out" });
+      gsap.from(".portrait-stage", { x: 45, opacity: 0, duration: 1, delay: 0.35, ease: "power3.out" });
+      gsap.utils.toArray(".reveal").forEach((element) => {
+        gsap.fromTo(element, { y: 35, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
+          duration: 0.75,
+          ease: "power3.out",
+          scrollTrigger: { trigger: element, start: "top 86%" },
+        });
+      });
+    }, pageRef);
+    return () => ctx.revert();
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const nextErrors = {};
+    if (!form.name.trim()) nextErrors.name = "Please enter your name.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) nextErrors.email = "Please enter a valid email.";
+    if (form.message.trim().length < 10) nextErrors.message = "Please enter at least 10 characters.";
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length === 0) setSubmitted(true);
+  };
+
+  return (
+    <main id="home" className="portfolio-page" ref={pageRef}>
       <div className="scanlines" />
       <Navigation />
 
       <section className="hero-panel" aria-label="Introduction">
-        <CornerMarks />
         <div className="hero-copy">
-          <p className="eyebrow">SOFTWARE DEVELOPER <span>|</span> AI & CLOUD ENTHUSIAST</p>
-          <h1>ADHIK</h1>
-          <p className="role">PROBLEM SOLVER <span>|</span> TECHNOLOGY EXPLORER</p>
+          <p className="eyebrow">HELLO, I'M</p>
+          <h1>ADHIK SHETTY</h1>
+          <p className="role-line">SOFTWARE DEVELOPER<br />AI & CLOUD ENTHUSIAST<br />PROBLEM SOLVER</p>
           <p className="intro">Technology. Innovation. Leadership.</p>
           <div className="hero-actions">
-            <a className="primary-button" href="#projects">
-              PORTFOLIO OF WORK <ArrowUpRight size={14} />
-            </a>
+            <a className="primary-button" href="#projects">PORTFOLIO OF WORK <ArrowUpRight size={14} /></a>
             <a className="secondary-button" href="#contact">GET IN TOUCH</a>
           </div>
         </div>
@@ -121,49 +250,161 @@ function App() {
 
         <div className="hud hud-left">SYS_01 / ONLINE</div>
         <div className="hud hud-right">MANGALORE, IN <span className="hud-dot" /></div>
-        <div className="hero-footer">SCROLL TO EXPLORE <span className="footer-line" /> 2026</div>
+        <a className="hero-footer" href="#about">SCROLL TO EXPLORE <span className="footer-line" /> 2026</a>
       </section>
 
-      <section id="projects" className="below-section">
-        <p className="eyebrow">SELECTED WORK</p>
-        <h2>Building ideas into<br /><em>working systems.</em></h2>
-        <div className="project-preview-grid">
-          {projects.map((project) => (
-            <article className="project-preview" key={project.number}>
-              <span>{project.number} / {project.label}</span>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="project-tags">{project.tags.map((tag) => <b key={tag}>{tag}</b>)}</div>
+      <section id="about" className="content-section reveal">
+        <SectionHeading kicker="01 / ABOUT" title="More Than" accent="Just Code." />
+        <div className="about-grid">
+          <div className="personal-card">
+            <p className="eyebrow">MY JOURNEY</p>
+            <p>I am Adhik Shetty, pursuing an MCA at St Aloysius (Deemed to be University), Mangaluru. I completed my BCA with a CGPA of 8.33 and continue to explore how software, AI and cloud technologies solve meaningful problems.</p>
+            <p>My interests extend from Smart India Hackathon work and network security to NCC leadership, team coordination and disciplined execution.</p>
+          </div>
+          <div className="milestone-grid">
+            <div><strong>8.33</strong><span>BCA CGPA</span></div>
+            <div><strong>MCA</strong><span>Currently pursuing</span></div>
+            <div><strong>SIH</strong><span>2026 university selection</span></div>
+            <div><strong>NCC</strong><span>Senior Under Officer</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" className="content-section reveal">
+        <SectionHeading kicker="02 / SKILLS" title="Tools I" accent="work with." />
+        <div className="accordion-list">
+          {skillGroups.map((group, index) => (
+            <article className={`accordion-item ${openSkills === index ? "open" : ""}`} key={group.title}>
+              <button type="button" onClick={() => setOpenSkills(openSkills === index ? -1 : index)}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{group.title}</strong>
+                <ChevronDown size={18} />
+              </button>
+              <div className="accordion-content">
+                {group.items.map((item) => <span key={item}>{item}</span>)}
+              </div>
             </article>
           ))}
         </div>
       </section>
-      <section id="about" className="content-section">
-        <p className="eyebrow">ABOUT / 02</p>
-        <h2>Engineering progress through<br /><em>curiosity and leadership.</em></h2>
-        <div className="about-grid">
-          <p className="content-copy">I am pursuing my MCA at St Aloysius (Deemed to be University), Mangaluru, after completing my BCA with a CGPA of 8.33. I enjoy solving practical problems across software, AI, cloud, cybersecurity and network security.</p>
-          <div className="milestone-list">
-            <span><b>8.33</b> BCA CGPA</span>
-            <span><b>MCA</b> 1st Semester</span>
-            <span><b>NCC</b> Senior Under Officer</span>
-            <span><b>SIH</b> 2026 University Selection</span>
-          </div>
+
+      <section id="projects" className="content-section reveal">
+        <SectionHeading kicker="03 / PROJECTS" title="Projects as" accent="case studies." />
+        <div className="accordion-list project-list">
+          {projects.map((project, index) => (
+            <article className={`project-case ${openProject === index ? "open" : ""}`} key={project.number}>
+              <button type="button" onClick={() => setOpenProject(openProject === index ? -1 : index)}>
+                <span className="project-number">{project.number}</span>
+                <div><small>{project.label}</small><strong>{project.title}</strong></div>
+                <ChevronDown size={18} />
+              </button>
+              <div className="project-detail">
+                <p>{project.summary}</p>
+                <ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+                <div className="project-tags">{project.stack.map((tag) => <b key={tag}>{tag}</b>)}</div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
-      <section id="skills" className="content-section">
-        <p className="eyebrow">CAPABILITIES / 03</p>
-        <h2>Skills built through<br /><em>continuous exploration.</em></h2>
-        <div className="skill-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
-        <p className="eyebrow exploring-label">CURRENTLY EXPLORING</p>
-        <div className="skill-list">{exploring.map((item) => <span key={item}>{item}</span>)}</div>
+
+      <section id="achievements" className="content-section reveal">
+        <SectionHeading kicker="04 / ACHIEVEMENTS" title="Recognition" accent="along the way." />
+        <div className="card-grid achievement-grid">
+          {achievements.map((item) => (
+            <article className="info-card" key={item.title}>
+              <div className="card-meta"><span>{item.year}</span><small>{item.label}</small></div>
+              <Award size={26} />
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
-      <section id="contact" className="content-section contact-section">
-        <p className="eyebrow">CONTACT / 04</p>
-        <h2>Let’s build something<br /><em>meaningful.</em></h2>
-        <p className="content-copy">Email, LinkedIn and GitHub links will be available here once provided.</p>
-        <div className="hero-actions"><span className="secondary-button">KARNATAKA, INDIA</span></div>
+
+      <section id="leadership" className="content-section reveal">
+        <SectionHeading kicker="05 / LEADERSHIP" title="Beyond" accent="academics." />
+        <div className="leadership-layout">
+          <div className="card-grid leadership-grid">
+            {leadership.map(({ icon: Icon, title, text }) => (
+              <article className="info-card" key={title}>
+                <Icon size={24} />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <aside className="strength-card">
+            <p className="eyebrow">PERSONAL STRENGTHS</p>
+            {["Team coordination", "Problem-solving", "Communication", "Adaptability", "Responsibility", "Continuous learning"].map((item) => <span key={item}>{item}</span>)}
+          </aside>
+        </div>
       </section>
+
+      <section id="education" className="content-section reveal">
+        <SectionHeading kicker="06 / EDUCATION" title="Academic" accent="foundation." />
+        <div className="timeline">
+          <article>
+            <span className="timeline-dot" />
+            <small>CURRENT</small>
+            <h3>Master of Computer Applications</h3>
+            <p>St Aloysius (Deemed to be University), Mangaluru — 1st semester</p>
+          </article>
+          <article>
+            <span className="timeline-dot" />
+            <small>COMPLETED</small>
+            <h3>Bachelor of Computer Applications</h3>
+            <p>St Aloysius (Deemed to be University), Mangaluru — CGPA 8.33</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="exploring" className="content-section reveal">
+        <SectionHeading kicker="07 / EXPLORING" title="Always Learning." accent="Always Evolving." />
+        <div className="interest-grid">
+          {interests.map((interest, index) => (
+            <article key={interest}><span>{String(index + 1).padStart(2, "0")}</span><h3>{interest}</h3></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="statement-section">
+        <p>Curiosity Drives Innovation.</p>
+        <p>Discipline Builds Excellence.</p>
+      </section>
+
+      <section id="contact" className="content-section contact-section reveal">
+        <SectionHeading kicker="08 / CONTACT" title="Have an Idea?" accent="Let’s Connect." />
+        <div className="contact-grid">
+          <aside className="contact-details">
+            <p>Send a project idea, collaboration opportunity or just say hello.</p>
+            <div><Mail size={18} /><span>Email address<br /><b>Not provided yet</b></span></div>
+            <a href="#contact" onClick={(event) => event.preventDefault()}><Linkedin size={18} /><span>LinkedIn<br /><b>Link not provided yet</b></span></a>
+            <a href="#contact" onClick={(event) => event.preventDefault()}><Github size={18} /><span>GitHub<br /><b>Link not provided yet</b></span></a>
+            <p className="location">KARNATAKA, INDIA</p>
+          </aside>
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            {submitted ? (
+              <div className="form-success">Thank you. Your message has been validated and is ready to send once email delivery is configured.</div>
+            ) : (
+              <>
+                <label>Name<input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name" /></label>
+                {errors.name && <span className="form-error">{errors.name}</span>}
+                <label>Email<input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@example.com" /></label>
+                {errors.email && <span className="form-error">{errors.email}</span>}
+                <label>Message<textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell me about your idea" rows="5" /></label>
+                {errors.message && <span className="form-error">{errors.message}</span>}
+                <button className="primary-button" type="submit">SEND MESSAGE <ArrowUpRight size={14} /></button>
+              </>
+            )}
+          </form>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <span>Always curious. Always building. Always evolving.</span>
+        <a href="#home" aria-label="Back to top"><ArrowDown size={16} /></a>
+      </footer>
     </main>
   );
 }
