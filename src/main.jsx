@@ -151,7 +151,6 @@ function Navigation() {
     <>
       <header className="topbar">
         <a className="logo" href="#home" aria-label="Adhik Shetty home">
-          <span className="logo-mark">A</span>
           <span className="logo-name">ADHIK SHETTY</span>
         </a>
         <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
