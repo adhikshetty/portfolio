@@ -33,7 +33,7 @@ a { color: inherit; }
 .nav-links a:hover, .nav-links a.active { color: #fff; border-bottom-color: var(--red); }
 .menu-button { display: none; color: var(--white); background: transparent; border: 0; }
 
-.hero-panel { width: min(96vw, 1000px); height: min(69vw, 595px); min-height: 530px; position: relative; z-index: 1; margin: 0 auto; border: 1px solid rgba(215, 220, 224, .4); overflow: hidden; clip-path: polygon(1.5% 0, 29% 0, 30% 1%, 68% 1%, 69% 0, 98.5% 0, 100% 3%, 100% 97%, 98.5% 100%, 68% 100%, 67% 99%, 39% 99%, 38% 100%, 1.5% 100%, 0 97%, 0 3%); background: #08090d url("/assets/hero-background.png") center / cover no-repeat; }
+.hero-panel { width: min(96vw, 1000px); height: min(69vw, 595px); min-height: 530px; position: relative; z-index: 1; margin: 0 auto; border: 1px solid rgba(215, 220, 224, .4); overflow: hidden; clip-path: polygon(1.5% 0, 29% 0, 30% 1%, 68% 1%, 69% 0, 98.5% 0, 100% 3%, 100% 97%, 98.5% 100%, 68% 100%, 67% 99%, 39% 99%, 38% 100%, 1.5% 100%, 0 97%, 0 3%); background: #08090d url("../assets/hero-background.png") center / cover no-repeat; }
 .hero-panel::before { content: ""; position: absolute; inset: 0; opacity: .28; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 73px 73px; mix-blend-mode: screen; }
 .corner { width: 18px; height: 18px; position: absolute; border-color: rgba(226, 230, 231, .7); z-index: 3; }
 .top-left { top: 16px; left: 18px; border-top: 1px solid; border-left: 1px solid; }

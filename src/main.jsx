@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import heroPortrait from "../assets/hero-portrait.png";
 import "./styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -241,7 +242,7 @@ function App() {
           <div className="portrait-glow" />
           <div className="portrait-ring ring-one" />
           <div className="portrait-ring ring-two" />
-          <img src="/assets/hero-portrait.png" alt="" />
+          <img src={heroPortrait} alt="" />
           <div className="light-streak streak-one" />
           <div className="light-streak streak-two" />
         </div>
