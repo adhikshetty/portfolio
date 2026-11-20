@@ -411,7 +411,10 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <span>Always curious. Always building. Always evolving.</span>
+        <div className="footer-brand">
+          <span className="footer-name"><b>A</b>DHIK SHETTY</span>
+          <span className="footer-tagline">Always curious. Always building. Always evolving.</span>
+        </div>
         <a href="#home" aria-label="Back to top"><ArrowDown size={16} /></a>
       </footer>
     </main>
