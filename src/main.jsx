@@ -37,11 +37,11 @@ const skillGroups = [
   },
   {
     title: "Web Development",
-    items: ["HTML", "CSS", "JavaScript", "Node.js"],
+    items: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS", "Node.js"],
   },
   {
     title: "Database",
-    items: ["MySQL", "SQLite"],
+    items: ["MySQL", "SQLite", "PostgreSQL"],
   },
   {
     title: "Development Tools",
