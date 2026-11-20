@@ -151,7 +151,7 @@ function Navigation() {
     <>
       <header className="topbar">
         <a className="logo" href="#home" aria-label="Adhik Shetty home">
-          <span className="logo-name">ADHIK SHETTY</span>
+          <span className="logo-name"><b>A</b>DHIK SHETTY</span>
         </a>
         <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
           {navItems.map(([label, id], index) => (
@@ -411,10 +411,7 @@ function App() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-brand">
-          <span className="footer-name"><b>A</b>DHIK SHETTY</span>
-          <span className="footer-tagline">Always curious. Always building. Always evolving.</span>
-        </div>
+        <span>Always curious. Always building. Always evolving.</span>
         <a href="#home" aria-label="Back to top"><ArrowDown size={16} /></a>
       </footer>
     </main>
