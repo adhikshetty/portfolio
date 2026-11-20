@@ -386,9 +386,9 @@ function App() {
         <div className="contact-grid">
           <aside className="contact-details">
             <p>Send a project idea, collaboration opportunity or just say hello.</p>
-            <div><Mail size={18} /><span>Email address<br /><b>Not provided yet</b></span></div>
-            <a href="#contact" onClick={(event) => event.preventDefault()}><Linkedin size={18} /><span>LinkedIn<br /><b>Link not provided yet</b></span></a>
-            <a href="#contact" onClick={(event) => event.preventDefault()}><Github size={18} /><span>GitHub<br /><b>Link not provided yet</b></span></a>
+            <a href="mailto:dineshpachikodi13@gmail.com"><Mail size={18} /><span>Email address<br /><b>dineshpachikodi13@gmail.com</b></span></a>
+            <a href="https://www.linkedin.com/in/adhik-d-shetty-2jul2005" target="_blank" rel="noreferrer"><Linkedin size={18} /><span>LinkedIn<br /><b>Adhik D Shetty</b></span></a>
+            <a href="https://github.com/adhikshetty" target="_blank" rel="noreferrer"><Github size={18} /><span>GitHub<br /><b>adhikshetty</b></span></a>
             <p className="location">KARNATAKA, INDIA</p>
           </aside>
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
