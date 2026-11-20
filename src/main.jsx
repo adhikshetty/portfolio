@@ -348,7 +348,7 @@ function App() {
             <span className="timeline-dot" />
             <small>CURRENT</small>
             <h3>Master of Computer Applications</h3>
-            <p>St Aloysius (Deemed to be University), Mangaluru — 1st semester</p>
+            <p>St Aloysius (Deemed to be University), AIMIT Centre, Beeri — 1st semester</p>
           </article>
           <article>
             <span className="timeline-dot" />
