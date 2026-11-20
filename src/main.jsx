@@ -231,7 +231,7 @@ function App() {
         <div className="hero-copy">
           <p className="eyebrow">HELLO, I'M</p>
           <h1>ADHIK SHETTY</h1>
-          <p className="role-line">SOFTWARE DEVELOPER<br />AI & CLOUD ENTHUSIAST<br />PROBLEM SOLVER</p>
+          <p className="role-line">Technology Enthusiast | Innovator | Leader | Lifelong Learner</p>
           <p className="intro">Technology. Innovation. Leadership.</p>
           <div className="hero-actions">
             <a className="primary-button" href="#projects">PORTFOLIO OF WORK <ArrowUpRight size={14} /></a>
