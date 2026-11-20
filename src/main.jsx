@@ -356,6 +356,12 @@ function App() {
             <h3>Bachelor of Computer Applications</h3>
             <p>St Aloysius (Deemed to be University), Mangaluru — CGPA 8.33</p>
           </article>
+          <article>
+            <span className="timeline-dot" />
+            <small>COMPLETED</small>
+            <h3>PUC — Commerce with Computer Science</h3>
+            <p>Sri Rama PU College, Kalladka — 93.17%</p>
+          </article>
         </div>
       </section>
 
