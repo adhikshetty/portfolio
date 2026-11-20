@@ -160,8 +160,8 @@ function Navigation() {
   return (
     <>
       <header className="topbar">
-        <a className="logo" href="#home" aria-label="Adhik Shetty home">
-          <span className="logo-name"><b>A</b>DHIK SHETTY</span>
+        <a className="logo" href="#home" aria-label="Adhik D Shetty home">
+          <span className="logo-name"><b>A</b>DHIK D SHETTY</span>
         </a>
         <nav className={`nav-links ${open ? "is-open" : ""}`} aria-label="Main navigation">
           {navItems.map(([label, id], index) => (
@@ -239,7 +239,7 @@ function App() {
       <section className="hero-panel" aria-label="Introduction">
         <div className="hero-copy">
           <p className="eyebrow">HELLO, I'M</p>
-          <h1>ADHIK SHETTY</h1>
+          <h1>ADHIK D SHETTY</h1>
           <p className="role-line">Technology Enthusiast | Innovator | Leader | Lifelong Learner</p>
           <p className="intro">Technology. Innovation. Leadership.</p>
           <div className="hero-actions">
@@ -271,11 +271,11 @@ function App() {
         <div className="about-grid">
           <div className="personal-card">
             <p className="eyebrow">MY JOURNEY</p>
-            <p>I'm Adhik Shetty, currently pursuing my MCA at St Aloysius (Deemed to be University), AIMIT Centre, Beeri, after completing my BCA with a CGPA of 8.33. I'm passionate about technology, innovation and exploring how Software, AI and Cloud Computing can turn ambitious ideas into meaningful solutions.</p>
+            <p>I'm Adhik D Shetty, currently pursuing my MCA at St Aloysius (Deemed to be University), AIMIT Centre, Beeri, after completing my BCA with a CGPA of 8.33. I'm passionate about technology, innovation and exploring how Software, AI and Cloud Computing can turn ambitious ideas into meaningful solutions.</p>
             <p>Beyond technology, my NCC journey has shaped me into a disciplined leader with a strong sense of responsibility, teamwork and determination. From national-level experiences to hackathons and innovative projects, I thrive on challenges, embrace continuous learning and believe in pushing beyond boundaries.</p>
           </div>
           <div className="about-visual">
-            <img className="professional-photo" src={professionalPhoto} alt="Adhik Shetty" />
+            <img className="professional-photo" src={professionalPhoto} alt="Adhik D Shetty" />
             <p className="eyebrow highlights-label">HIGHLIGHTS</p>
             <div className="milestone-grid">
               <div><strong>8.33</strong><span>BCA CGPA</span></div>
