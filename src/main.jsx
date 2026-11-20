@@ -254,8 +254,11 @@ function App() {
       </section>
 
       <section id="about" className="content-section reveal">
-        <p className="about-tagline">Not defined by one skill, but driven by endless possibilities</p>
-        <SectionHeading kicker="01 / ABOUT" title="More Than" accent="Just Code." />
+        <SectionHeading
+          kicker="01 / ABOUT"
+          title="Not defined by one skill, but driven by"
+          accent="ENDLESS POSSIBILITIES."
+        />
         <div className="about-grid">
           <div className="personal-card">
             <p className="eyebrow">MY JOURNEY</p>
