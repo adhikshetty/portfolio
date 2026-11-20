@@ -258,10 +258,8 @@ function App() {
         <div className="about-grid">
           <div className="personal-card">
             <p className="eyebrow">MY JOURNEY</p>
-            <p>I'm Adhik Shetty, currently pursuing my Master of Computer Applications (MCA) at St Aloysius (Deemed to be University), AIMIT Centre, Beeri. I completed my Bachelor of Computer Applications (BCA) with a CGPA of 8.33 and have a strong interest in exploring how technology can transform ideas into meaningful solutions.</p>
-            <p>My journey goes beyond academics and programming. I'm passionate about software development, Artificial Intelligence, Cloud Computing, cybersecurity and emerging technologies. Through experiences like the Smart India Hackathon, research and technical projects, I've developed a problem-solving mindset and a passion for innovation.</p>
-            <p>Beyond technology, my NCC journey has shaped my leadership, discipline, teamwork and ability to take responsibility. From participating in national-level activities to coordinating teams and embracing challenges, I believe in continuous growth, learning and pushing beyond limitations.</p>
-            <p>I'm always eager to explore new opportunities, collaborate with like-minded people, and turn ambitious ideas into something meaningful.</p>
+            <p>I'm Adhik Shetty, currently pursuing my MCA at St Aloysius (Deemed to be University), AIMIT Centre, Beeri, after completing my BCA with a CGPA of 8.33. I'm passionate about technology, innovation and exploring how Software, AI and Cloud Computing can turn ambitious ideas into meaningful solutions.</p>
+            <p>Beyond technology, my NCC journey has shaped me into a disciplined leader with a strong sense of responsibility, teamwork and determination. From national-level experiences to hackathons and innovative projects, I thrive on challenges, embrace continuous learning and believe in pushing beyond boundaries.</p>
           </div>
           <div className="milestone-grid">
             <div><strong>8.33</strong><span>BCA CGPA</span></div>
