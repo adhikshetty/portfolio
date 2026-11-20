@@ -352,7 +352,7 @@ function App() {
           </article>
           <article>
             <span className="timeline-dot" />
-            <small>COMPLETED</small>
+            <small>2026</small>
             <h3>Bachelor of Computer Applications</h3>
             <p>St Aloysius (Deemed to be University), Mangaluru — CGPA 8.33</p>
           </article>
